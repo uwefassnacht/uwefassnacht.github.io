@@ -1,51 +1,46 @@
-.wrapper {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
-  font-weight: light;
-  color: #333333;
-  text-align: center;
-
+:root{
+  --bg:#faf9f7; --text:#161616; --muted:#6b6f76; --border:#e5e3de; --accent:#c9622a;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-
-.wrapper > * {
-  padding: 10px;
-  flex: 1 100%;
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#121212; --text:#f4f3f1; --muted:#9b9d9f; --border:#2a2a2a; --accent:#ff8a4c; }
 }
+*{ box-sizing:border-box; }
+html{ color-scheme: light dark; }
+body{ margin:0; font-family:var(--font); background:var(--bg); color:var(--text); line-height:1.6; }
 
-.header {
-  background: tomato;
-}
+main{ max-width: 680px; margin:0 auto; padding: clamp(3rem,8vw,6rem) 1.5rem 4rem; }
 
-.footer {
-  background: green;
-}
+.byline{ display:flex; align-items:center; gap:.6rem; margin-bottom:1.75rem; }
+.avatar{ width:44px; height:44px; border-radius:50%; object-fit:cover; }
+.byline span{ color:var(--muted); font-size:.9rem; }
 
-.pic {
-  padding-top: 2em;
-  flex: 1 1 auto;
-  #background: gold;
+h1{
+  font-size: clamp(2.4rem, 9vw, 4rem);
+  line-height: 1.02;
+  letter-spacing:-.02em;
+  margin: 0 0 .35rem;
 }
+.role{ font-size:1.05rem; color:var(--accent); font-weight:600; margin:0 0 2.5rem; }
 
-.main {
-  flex: 3 1 400px;
-  text-align: left;
-  #background: deepskyblue;
-}
+hr{ border:none; border-top:1px solid var(--border); margin: 2rem 0; }
 
-body {
-  padding: 2em;
-}
+.bio{ font-size:1.15rem; max-width:56ch; }
+.bio a{ color:inherit; }
+.bio + .bio{ color:var(--muted); font-size:1.02rem; }
 
-.img-circle {
-  border-radius: 50%;
-  margin-bottom: -10px;
+.tags{ display:flex; flex-wrap:wrap; gap:1.25rem; list-style:none; margin:1.1rem 0 0; padding:0; }
+.tag{ font-size:.95rem; font-weight:600; }
+.tag::before{ content:"— "; color:var(--accent); }
+
+.links{ display:flex; flex-wrap:wrap; gap: .4rem 1.4rem; margin:0; padding:0; list-style:none; }
+.links a{
+  color:var(--text); text-decoration:none; font-size:1.05rem; font-weight:600;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat:no-repeat; background-position: 0 100%; background-size: 0% 2px;
+  transition: background-size .18s ease;
+  padding-bottom:2px;
 }
+.links a:hover{ background-size: 100% 2px; }
+
+footer{ margin-top:3.5rem; color:var(--muted); font-size:.82rem; }
